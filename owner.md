@@ -1,1 +1,1 @@
-Osipov Nickolay Sergeevich
+Osipov Nikolay Sergeevich

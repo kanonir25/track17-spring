@@ -1,1 +1,2 @@
-Osipov Nikolay Sergeevich
+Осипов Николай Сергеевич
+СА-11

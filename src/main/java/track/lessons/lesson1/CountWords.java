@@ -35,16 +35,12 @@ public class CountWords {
      */
     public long countNumbers(File file) throws Exception {
         long sum = 0;
-        int number = 0;
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         while ((line = reader.readLine()) != null) {
-            if (line.charAt(0) >= '0' && line.charAt(0) <= '9') {
-                number = number * 10 + (int) (line.charAt(0));
-            } else {
-                sum += number;
-                number = 0;
-            }
+            try {
+                sum += Integer.parseInt(line);
+            } catch (NumberFormatException e) { }
         }
         return sum;
     }
@@ -62,13 +58,16 @@ public class CountWords {
         StringBuilder builder = new StringBuilder();
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
+
         while ((line = reader.readLine()) != null) {
-            if ((line.charAt(0) < '0' || line.charAt(0) > '9') && line.charAt(0) != ' ' && line.charAt(0) != '\n') {
+            String emptyStr = line + '0';
+            if (emptyStr.charAt(0) != '0' && (line.charAt(0) < '0' || line.charAt(0) > '9') &&
+                    line.charAt(0) != ' ') {
                 builder.append(line);
                 builder.append(' ');
             }
         }
-        result = builder.toString();
+        result = builder.toString().substring(0, builder.length() - 1);
         return result;
     }
 

@@ -12,6 +12,7 @@ import java.util.NoSuchElementException;
 public class MyArrayList extends List {
     protected int capacity;
     private int[] data;
+
     public MyArrayList() {
         this.size = 0;
         this.capacity = 2;
@@ -25,8 +26,9 @@ public class MyArrayList extends List {
 
     @Override
     void add(int item) {
-        if (size == capacity)
+        if (size == capacity) {
             expand_capacity();
+        }
         this.data[size] = item;
         size++;
     }
@@ -34,10 +36,11 @@ public class MyArrayList extends List {
     @Override
     int remove(int idx) throws NoSuchElementException {
         int removedElement;
-        if (idx < size)
+        if (idx < size) {
             removedElement = data[idx];
-        else
+        } else {
             throw new NoSuchElementException();
+        }
         System.arraycopy(data, idx + 1, data, idx, size - idx - 1);
         size--;
         return removedElement;
@@ -46,14 +49,15 @@ public class MyArrayList extends List {
     @Override
     int get(int idx) throws NoSuchElementException {
         int gotElement;
-        if (idx < size)
+        if (idx < size) {
             gotElement = data[idx];
-        else
+        } else {
             throw new NoSuchElementException();
+        }
         return gotElement;
     }
 
-    private void expand_capacity(){
+    private void expand_capacity() {
         int oldCapacity = this.capacity;
         if (this.capacity == 0) {
             this.capacity = 2;

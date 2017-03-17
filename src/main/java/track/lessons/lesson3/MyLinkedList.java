@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * Должен наследовать List
  * Односвязный список
  */
-public class MyLinkedList extends List implements Stack, Queue{
+public class MyLinkedList extends List implements Stack, Queue {
 
     /**
      * private - используется для сокрытия этого класса от других.
@@ -25,8 +25,10 @@ public class MyLinkedList extends List implements Stack, Queue{
             this.val = val;
         }
     }
+
     private Node endList;
-    public MyLinkedList(){
+
+    public MyLinkedList() {
         super();
         this.endList = new Node(null, null, 0);
     }
@@ -43,13 +45,13 @@ public class MyLinkedList extends List implements Stack, Queue{
     int remove(int idx) throws NoSuchElementException {
         int removedValue;
         Node currentNode = this.endList;
-        if (idx < size){
-            for (int i = 0; i < size - idx - 1; i++){
+        if (idx < size) {
+            for (int i = 0; i < size - idx - 1; i++) {
                 currentNode = currentNode.prev;
             }
             removedValue = currentNode.val;
             size--;
-            while (currentNode.next != null){
+            while (currentNode.next != null) {
                 currentNode.next.prev = currentNode.prev;
                 currentNode.prev.next = currentNode.next;
                 currentNode = currentNode.next;
@@ -71,25 +73,27 @@ public class MyLinkedList extends List implements Stack, Queue{
             }
             gotValue = currentNode.val;
         } else {
-                throw new NoSuchElementException();
-            }
+            throw new NoSuchElementException();
+        }
         return gotValue;
     }
 
     public void enqueue(int value) {
         Node currentNode = this.endList;
-        while (currentNode.prev != null)
+        while (currentNode.prev != null) {
             currentNode = currentNode.prev;
+        }
         Node additionNode = new Node(null, currentNode, value);
         currentNode.prev = additionNode;
         size++;
     }
 
-    public int dequeue() throws NoSuchElementException{
+    public int dequeue() throws NoSuchElementException {
         int deletedValue;
         Node currentNode = this.endList;
-        while (currentNode.prev != null)
+        while (currentNode.prev != null) {
             currentNode = currentNode.prev;
+        }
         deletedValue = currentNode.val;
         currentNode.next.prev = null;
         currentNode.next = null;
@@ -97,13 +101,14 @@ public class MyLinkedList extends List implements Stack, Queue{
         return deletedValue;
     }
 
-    public void push(int value){
+    public void push(int value) {
         this.add(value);
         size++;
     }
-    public int pop() throws NoSuchElementException{
+
+    public int pop() throws NoSuchElementException {
         int deletedValue;
-        if (size > 0){
+        if (size > 0) {
             deletedValue = this.endList.val;
             if (this.endList.prev != null) {
                 this.endList.prev.next = null;

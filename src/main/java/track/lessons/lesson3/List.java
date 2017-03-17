@@ -14,7 +14,9 @@ public abstract class List {
     /**
      * Добавить элемент в конец списка
      */
-    public List(){
+
+    public List() {
+
         this.size = 0;
     }
 
@@ -39,7 +41,8 @@ public abstract class List {
     /**
      * Кол-во элементов списка
      */
-    public int size(){
+    public int size() {
+
         return size;
     }
 
